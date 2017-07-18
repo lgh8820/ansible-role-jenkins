@@ -12,10 +12,6 @@ Requires `curl` to be installed on the server. Also, newer versions of Jenkins r
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    jenkins_package_state: present
-
-The state of the `jenkins` package install. By default this role installs Jenkins but will not upgrade Jenkins (when using package-based installs). If you want to always update to the latest version, change this to `latest`.
-
     jenkins_hostname: localhost
 
 The system hostname; usually `localhost` works fine. This will be used during setup to communicate with the running Jenkins instance via HTTP requests.
@@ -37,14 +33,6 @@ Default admin account credentials which will be created the first time Jenkins i
 
 Default admin password file which will be created the first time Jenkins is installed as /var/lib/jenkins/secrets/initialAdminPassword
 
-    jenkins_admin_token: ""
-
-A Jenkins API token (generated after installation) for [authenticated scripted clients](https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients). You can use the admin token instead of a username and password for more convenient scripted access to Jenkins (e.g. for plugin management through this role).
-
-    jenkins_admin_token_file: ""
-
-A file (with full path) on the Jenkins server containing the admin token. If this variable is set in addition to the `jenkins_admin_token`, the contents of this file will overwrite the value of `jenkins_admin_token`.
-
     jenkins_jar_location: /opt/jenkins-cli.jar
 
 The location at which the `jenkins-cli.jar` jarfile will be kept. This is used for communicating with Jenkins via the CLI.
@@ -54,12 +42,8 @@ The location at which the `jenkins-cli.jar` jarfile will be kept. This is used f
 Jenkins plugins to be installed automatically during provisioning.
 
     jenkins_plugin_updates_expiration: 86400
-
+    
 Number of seconds after which a new copy of the update-center.json file is downloaded. Set it to 0 if no cache file should be used.
-
-    jenkins_plugin_timeout: 30
-
-The server connection timeout, in seconds, when installing Jenkins plugins.
 
     jenkins_version: "1.644"
     jenkins_pkg_url: "http://www.example.com"
